@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean dotUsed = false;
 
+    private int backCount = 0;
+
     private boolean equalClicked = false;
     private String lastExpression = "";
 
@@ -82,6 +84,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initializeViewVariables();
         setOnClickListeners();
         setOnTouchListener();
+    }
+
+    //Added by Thomas Skowronski
+    public void onBackPressed(){
+        if (backCount == 0){
+            Toast.makeText(getApplicationContext(), "Press back again to exit.", Toast.LENGTH_SHORT).show();
+            backCount++;
+        } else {
+            MainActivity.this.finish();
+            System.exit(0);
+        }
+
     }
 
     private void initializeViewVariables()
@@ -178,6 +192,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             CancelPast(); //Added by MFonggrasin
         }
 
+        backCount = 0;// Added by Thomas Skowronski
+
         switch (view.getId())
         {
             case R.id.button_zero:
@@ -232,7 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (addOperand("x")) equalClicked = false;
                 break;
 
-            case R.id.button_exponent:
+            case R.id.button_exponent: // Added by Thomas Skowronski
                 if (addExponent()) equalClicked = false;
                 break;
 
@@ -342,6 +358,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
+    //Added by Thomas Skowronski
     private boolean addExponent()
     {
         textViewInputNumbers.setText("("+textViewInputNumbers.getText() + ")x(" + textViewInputNumbers.getText() +")");
