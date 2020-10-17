@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean dotUsed = false;
 
-    private int backCount = 0;
+    private boolean backExit = false;
 
     private boolean equalClicked = false;
     private String lastExpression = "";
@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Added by Thomas Skowronski
     public void onBackPressed(){
-        if (backCount == 0){
+        if (!backExit){
             Toast.makeText(getApplicationContext(), "Press back again to exit.", Toast.LENGTH_SHORT).show();
-            backCount++;
+            backExit = true;
         } else {
             MainActivity.this.finish();
             System.exit(0);
@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             CancelPast(); //Added by MFonggrasin
         }
 
-        backCount = 0;// Added by Thomas Skowronski
+        backExit = false;// Added by Thomas Skowronski
 
         switch (view.getId())
         {
