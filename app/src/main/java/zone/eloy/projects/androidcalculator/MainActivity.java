@@ -317,7 +317,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(buttonHistory.getText().equals("Back")){
             textViewInputNumbers.setText(tempTXT);
             buttonHistory.setText("History");
-            //textViewInputNumbers.getScrollX();
         }
     }
 
@@ -507,9 +506,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void calculate(String input)
     {
         String result = "";
+        Log.d("MAIN", "EMPTY RESULTS" + result);
+        String temp = input; //Project 2 Moved by MFonggrasin
         try
         {
-            String temp = input;
             if (equalClicked)
             {
                 temp = input + lastExpression;
@@ -536,11 +536,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (result.contains("."))
         {
             result = result.replaceAll("\\.?0*$", "");
+
+            String historyTmp = temp + " = " + result; //Project 2 Added by MFonggrasin
             if(history.size() > 3){              //Added by MFonggrasin
                 history.remove(0);
-                history.add(result);
+                history.add(historyTmp);
             }else {
-                history.add(result);
+                history.add(historyTmp);
             }                                   // End Added by MFonggrasin
             textViewInputNumbers.setText(result);
         }
