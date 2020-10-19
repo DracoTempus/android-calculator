@@ -360,6 +360,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Added by Thomas Skowronski
     private boolean addExponent()
     {
+        equalClicked = false;
         textViewInputNumbers.setText("("+textViewInputNumbers.getText() + ")x(" + textViewInputNumbers.getText() +")");
         calculate(textViewInputNumbers.getText().toString());
 
