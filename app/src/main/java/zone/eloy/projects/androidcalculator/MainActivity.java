@@ -409,27 +409,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch (defineLastCharacter(lastInput))
             {
                 case IS_NUMBER:
+                case IS_CLOSE_PARENTHESIS:
                     textViewInputNumbers.setText(textViewInputNumbers.getText() + ")");
                     done = true;
                     openParenthesis--;
                     dotUsed = false;
                     break;
                 case IS_OPERAND:
-                    textViewInputNumbers.setText(textViewInputNumbers.getText() + "(");
-                    done = true;
-                    openParenthesis++;
-                    dotUsed = false;
-                    break;
                 case IS_OPEN_PARENTHESIS:
                     textViewInputNumbers.setText(textViewInputNumbers.getText() + "(");
                     done = true;
                     openParenthesis++;
-                    dotUsed = false;
-                    break;
-                case IS_CLOSE_PARENTHESIS:
-                    textViewInputNumbers.setText(textViewInputNumbers.getText() + ")");
-                    done = true;
-                    openParenthesis--;
                     dotUsed = false;
                     break;
             }
