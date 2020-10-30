@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean dotUsed = false;
 
-    private boolean backExit = false;
+    private boolean backExit = false;//Thomas phase 2
+    private String ans = "";//Thomas phase 3
 
     private boolean equalClicked = false;
     private String lastExpression = "";
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonEqual;
     Button buttonDot;
     Button buttonExponent;
+    Button buttonAns;
 
     TextView textViewInputNumbers;
 
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonEqual = (Button) findViewById(R.id.button_equal);
         buttonDot = (Button) findViewById(R.id.button_dot);
         buttonExponent = (Button) findViewById(R.id.button_exponent);
+        buttonAns = (Button) findViewById(R.id.button_ans);
         textViewInputNumbers = (TextView) findViewById(R.id.textView_input_numbers);
     }
 
@@ -152,7 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonAddition.setOnClickListener(this);
         buttonEqual.setOnClickListener(this);
         buttonDot.setOnClickListener(this);
-        buttonExponent.setOnClickListener(this);
+        buttonExponent.setOnClickListener(this);//Thomas Phase 2
+        buttonAns.setOnClickListener(this);//Thomas Phase 3
     }
 
     private void setOnTouchListener()
@@ -179,7 +183,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSubtraction.setOnTouchListener(this);
         buttonAddition.setOnTouchListener(this);
         buttonDot.setOnTouchListener(this);
-        buttonExponent.setOnTouchListener(this);
+        buttonExponent.setOnTouchListener(this);//Thomas phase 2
+        buttonAns.setOnTouchListener(this);//Thomas phase 3
     }
 
     @Override
@@ -248,8 +253,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (addOperand("x")) equalClicked = false;
                 break;
 
-            case R.id.button_exponent: // Added by Thomas Skowronski
+            case R.id.button_exponent: // Added by Thomas Skowronski phase 2
                 if (addExponent()) equalClicked = false;
+                break;
+
+            case R.id.button_ans: // Added by Thomas Skowronski phase 3
+                if (addAns()) equalClicked = false;
                 break;
 
             case R.id.button_percent:
@@ -364,6 +373,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewInputNumbers.setText("("+textViewInputNumbers.getText() + ")x(" + textViewInputNumbers.getText() +")");
         calculate(textViewInputNumbers.getText().toString());
 
+        return true;
+    }
+
+    //Added by Thomas phase 3
+    private boolean addAns()
+    {
+        equalClicked = false;
+        textViewInputNumbers.setText(textViewInputNumbers.getText() + ans);
         return true;
     }
 
@@ -552,6 +569,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else {
                 history.add(historyTmp);
             }                                   // End Added by MFonggrasin
+            ans = result;//Thomas phase 3
             textViewInputNumbers.setText(result);
         }
     }

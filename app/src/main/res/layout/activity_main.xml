@@ -317,6 +317,19 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/button_ans"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0.1dp"
+            android:layout_marginRight="0.1dp"
+            android:layout_marginTop="0.1dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="ANS"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_zero"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -324,7 +337,7 @@
             android:layout_marginLeft="0.9dp"
             android:layout_marginRight="0.1dp"
             android:layout_marginTop="0.1dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@android:color/black"
             android:text="0"
             android:textColor="@android:color/white"
